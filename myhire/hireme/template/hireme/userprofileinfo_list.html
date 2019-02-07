@@ -1,0 +1,52 @@
+{% extends 'hireme/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<center><h1>List of available developers</h1></center>
+       <div class="container">
+        <div class="row">
+                            <div class="col-md-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">Table</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                <table id="datatable" class="table table-striped table-bordered">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Skillset</th>
+                                                            <th>phone number</th>
+                                                            <th>Profile info</th>
+                                                        </tr>
+                                                    </thead>
+                                                     {% for obj in object_list %}
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>{{ obj.user }}</td>
+                                                            <td>{{ obj.skill }}</td>
+                                                            <td>{{ obj.phone_number }}</td>
+                                                            <td><a href="{% url 'hireme:detail' pk=obj.pk %}" class="btn btn-success">View profile</a></td>
+                                                        </tr>
+                                                         {% endfor %}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+       </div>
+       </div>
+{% endblock  %}
+{% comment %} <ul>
+    {% for obj in object_list %}
+        <li><a href="{% url 'hireme:detail' pk=obj.pk %}">{{ obj.user }}</a></li>
+    {% endfor %}
+</ul>
+
+        {% else %}
+            <p>NO RECORD!!</p>
+        {% endif %} {% endcomment %}
